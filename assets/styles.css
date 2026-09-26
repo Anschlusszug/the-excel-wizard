@@ -532,6 +532,20 @@ h2 {
   font-size: .82rem;
   color: var(--slate-light);
   margin-top: .9rem;
+  min-height: 1.2em;
+}
+.form-note.is-error { color: #b42318; font-weight: 500; }
+.form-note.is-success { color: #0a7d40; font-weight: 500; }
+
+/* spam honeypot — hidden from humans, irresistible to bots */
+.hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* --------------------------------------------------------- footer */
