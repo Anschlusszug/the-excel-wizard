@@ -3,7 +3,11 @@
 Marketing site for **The Excel Wizard** — a consulting practice that rescues
 out-of-control Excel workbooks.
 
-- **Live site:** enable GitHub Pages on this repo (Settings → Pages → deploy from `master` root)
+- **Live site:** <https://anschlusszug.github.io/the-excel-wizard/>
+- **Hosting:** GitHub Pages, deployed from the `master` branch root. Free, HTTPS
+  included, and every push to `master` rebuilds and republishes automatically —
+  there is nothing to run.
+- **To change the site:** edit, `git commit`, `git push`. Wait ~30 seconds, done.
 - **Stack:** plain HTML + CSS + vanilla JS. No build step, no dependencies.
 
 ```
@@ -11,6 +15,17 @@ index.html          all markup
 assets/styles.css   all styling
 assets/img/         hero + problem imagery (local, no hotlinking)
 ```
+
+> The only third-party requests the page makes are the Font Awesome icon CDN and
+> Google Fonts. Both can be self-hosted if you ever want the site fully offline.
+
+### Buying a domain
+
+GitHub Pages serves from `anschlusszug.github.io` for free. If you later want
+`theexcelwizard.com`, buy it from any registrar, point a `CNAME` for `www` at
+`anschlusszug.github.io`, then set "Custom domain" in **Settings → Pages**.
+GitHub provisions the TLS certificate automatically and you can force HTTPS.
+Note Web3Forms will also need the new domain allowed once you have a key.
 
 ---
 
