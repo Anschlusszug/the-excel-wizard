@@ -527,6 +527,26 @@ h2 {
   border-color: var(--navy);
   box-shadow: 0 0 0 3px rgba(15, 46, 74, .1);
 }
+.field-hint {
+  font-size: .8rem;
+  line-height: 1.6;
+  color: var(--slate-light);
+  margin-top: .55rem;
+  padding: .7rem .85rem;
+  background: #fffbeb;
+  border: 1px solid #f5e6b8;
+  border-radius: 9px;
+}
+.field-hint strong { color: #78591a; font-weight: 600; }
+.field-hint code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .95em;
+  background: rgba(15, 46, 74, .07);
+  color: var(--navy);
+  padding: .08em .35em;
+  border-radius: 4px;
+}
+
 .form-note {
   text-align: center;
   font-size: .82rem;

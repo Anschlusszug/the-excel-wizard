@@ -52,6 +52,38 @@ nothing is actually delivered — visitors should be pointed at
 
 ---
 
+## Why the form takes a link, not an upload
+
+The form collects an optional **link** to a file the client shares from their own
+Drive/Dropbox/SharePoint, rather than accepting the file directly. This is a
+deliberate decision, not a missing feature. File attachments are also a paid-only
+Web3Forms feature, so the free plan could not do it regardless.
+
+The reasons, in order of how much they matter:
+
+1. **Client confidentiality.** A spreadsheet consultancy's clients hold their most
+   sensitive data in exactly these files — financial models, payroll, customer
+   lists. Accepting uploads means storing other people's confidential and
+   personal data, which brings GDPR obligations (processor agreements, retention
+   limits, deletion on request) that a solo practice has no infrastructure to meet.
+2. **Macro risk.** `.xlsm` / `.xlsb` / `.xltm` can carry VBA. The danger is not
+   storing a file, it is anything that *parses* it — most upload services
+   thumbnail or convert, which means running attacker-controlled code.
+3. **Unbounded cost and storage.** A public bucket with no lifecycle rule quietly
+   accumulates client data indefinitely.
+4. **Better sales process anyway.** You get the problem description in plain text
+   first, so the consultation call is useful instead of exploratory.
+
+The form's hint text walks clients through sharing a redacted `.xlsx`, and tells
+them screenshots are a fine alternative when the data is too sensitive to share.
+
+**If you later want real uploads**, the requirements are: a dedicated bucket (not
+served publicly), short-lived presigned URLs, an allowlist of `xlsx` only with
+`xlsm` hard-rejected, lifecycle rules that delete objects automatically, and a
+published retention policy.
+
+---
+
 ## Imagery
 
 Photos in `assets/img/` come from [Unsplash](https://unsplash.com) under the

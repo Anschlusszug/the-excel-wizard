@@ -299,6 +299,20 @@
                         <label for="message">What's going wrong?</label>
                         <textarea id="message" name="message" rows="4" placeholder="Our month-end report takes three days and last quarter the totals were wrong..." required></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="fileLink">Link to a sample file <span class="optional">(optional, but it speeds things up a lot)</span></label>
+                        <input type="url" id="fileLink" name="file_link" placeholder="https://drive.google.com/…">
+                        <p class="field-hint">
+                            We deliberately don't accept uploads here. Drop the workbook in
+                            Google Drive, OneDrive, Dropbox or SharePoint, set the link to
+                            &ldquo;anyone with the link can view&rdquo;, and paste it above.
+                            <strong>Before you share it:</strong> replace names, salaries and
+                            customer details with placeholders, and save it as
+                            <code>.xlsx</code> rather than <code>.xlsm</code> so no macros
+                            travel with it. If the data is too sensitive to share at all,
+                            screenshots of the broken formulas work fine.
+                        </p>
+                    </div>
                     <button type="submit" class="btn-primary btn-full">Request my free consultation</button>
                     <p class="form-note" id="formNote">We reply within one business day. No sales sequences.</p>
                 </form>
@@ -346,6 +360,14 @@
           }
           if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             note.textContent = 'That email address does not look right.';
+            note.className = 'form-note is-error';
+            return;
+          }
+
+          // Optional file link: if they typed something, it must be a real http(s) URL
+          var link = form.file_link.value.trim();
+          if (link && !/^https?:\/\/[^\s]+\.[^\s]{2,}/i.test(link)) {
+            note.textContent = 'That file link does not look like a valid URL — it should start with https://';
             note.className = 'form-note is-error';
             return;
           }
